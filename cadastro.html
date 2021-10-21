@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema imobiliario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/bootstrap.css" rel="stylesheet" />
+	<link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link href="./css/estilo.css" rel="stylesheet">
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a href="home.html"><img src="./img/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="./img/circulo-logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="busca_registros.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Busca</span></a></li>
+                        <!--<li><a href="./agenda.html"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agenda</span></a></li>-->
+                        <li class="active"><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Cadastrar</span></a></li>
+                        <li><a href="./usuario.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuários</span></a></li>
+                        <!--<li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Relatórios</span></a></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="search hidden-xs hidden-sm">
+                                <!--<input type="text" placeholder="Buscar" id="search">-->
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <!--<li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_tarefa">Adicionar Tarefa</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>-->
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="./img/perfil.jpg" alt="user">
+                                            <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <span id="nome_perfil">Carregando</span>
+                                                    <p class="text-muted small" id="email_perfil">
+                                                        carregando
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="./servidor/sair.php" class="view btn-sm active">Sair</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>Sistema imobiliario</h1>
+                    <div class="row">
+                        <!--<div class="col-md-12 menuTabs">
+							<div class="col-md-3 col-xs-12 tab">Info básicas</div>
+							<div class="col-md-3 col-xs-12 tab">Localização</div>
+							<div class="col-md-3 col-xs-12 tab">Características</div>
+							<div class="col-md-3 col-xs-12 tab">Info adicionais</div>
+						</div>-->
+						<ul class="nav nav-pills col-md-12">
+							<li role="presentation" class="active col-md-3 col-xs-12 tab" id="tab1"><a onclick="trocarPagina(1);">Informações básicas</a></li>
+							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab2"><a onclick="trocarPagina(2);">Localização</a></li>
+							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab3"><a onclick="trocarPagina(3);">Características</a></li>
+							<li role="presentation" class="col-md-3 col-xs-12 tab" id="tab4"><a onclick="trocarPagina(4);">Informações adicionais</a></li>
+						</ul>
+                    </div>
+					<form class="form-horizontal" id="formImovel">
+					<div class="row" style="padding-right: 4.3%;">
+						<div class="col-md-12 formulario-imoveis">
+
+								<fieldset id="pagina1" class="visivel">
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Nome do prédio</label>
+									  <div class="col-md-4">
+									  <input id="nome" name="nome " type="text" placeholder="Exemplo: São João" class="form-control input-md">
+									  </div>
+									</div>
+
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Suítes</label>
+									  <div class="col-md-4">
+									  <input id="suites" name="suites" type="number" placeholder="Quantidade de suítes" class="form-control input-md">
+									  </div>
+									</div>
+
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Quartos</label>
+									  <div class="col-md-4">
+									  <input id="quartos" name="quartos" type="number" placeholder="Quantidade de quartos" class="form-control input-md">
+									  </div>
+									</div>
+
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Área privativa m²</label>
+									  <div class="col-md-4">
+									  <input id="area_privativa" name="area_privativa" type="text" placeholder="Área total privativa" class="form-control input-md">
+									  </div>
+									</div>
+
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Área total m²</label>
+									  <div class="col-md-4">
+									  <input id="area_total" name="area_total" type="text" placeholder="Área total do imóvel" class="form-control input-md">
+									  </div>
+									</div>
+
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Vagas de garagem</label>
+									  <div class="col-md-4">
+									  <input id="vaga_garagem" name="vaga_garagem" type="number" placeholder="Número de vagas de garagem" class="form-control input-md">
+									  </div>
+									</div>
+
+								</fieldset>
+								<fieldset id="pagina2" class="oculto">
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">CEP</label>
+									  <div class="col-md-4">
+									  <input id="cep" name="cep" type="text" placeholder="Exemplo: 89253-600" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Estado</label>
+									  <div class="col-md-4">
+									  <input id="estado" name="estado" type="text" placeholder="Exemplo: Santa Catarina" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Cidade</label>
+									  <div class="col-md-4">
+									  <input id="cidade" name="cidade" type="text" placeholder="Exemplo: Blumenau" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Bairro</label>
+									  <div class="col-md-4">
+									  <input id="bairro" name="bairro" type="text" placeholder="Exemplo: Vila Nova" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Rua</label>
+									  <div class="col-md-4">
+									  <input id="rua" name="rua" type="text" placeholder="Exemplo: Theodoro Hultrup" class="form-control input-md">
+									  </div>
+									</div>
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Número</label>
+									  <div class="col-md-4">
+									  <input id="numero" name="numero" type="number" placeholder="Numero do imóvel" class="form-control input-md">
+									  </div>
+									</div>
+
+								</fieldset>
+								<fieldset id="pagina3" class="oculto">
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Características</label>
+									  <div class="col-md-4">
+									  <textarea id="caracteristicas" name="caracteristicas" type="text" placeholder="Exemplo: Pé duplo, sacada" class="form-control input-md"></textarea>
+									  </div>
+									</div>
+
+								</fieldset>
+								<fieldset id="pagina4" class="oculto">
+									<div class="form-group">
+									  <label class="col-md-4 control-label" for="textinput">Informações Adicionais</label>
+									  <div class="col-md-4">
+									  <textarea id="informacoes_adicionais" name="informacoes_adicionais" placeholder="Exemplo: Aceita permuta" class="form-control input-md"></textarea>
+									  </div>
+									</div>
+
+								</fieldset>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group" id="btnRodape">
+						  <label class="col-md-4 control-label" for="button1id"></label>
+						  <div class="col-md-8">
+							<button type="button" id="btnProximo" name="button2id" class="btn btn-success floatRight" onclick="pagProx();">Próximo</button>
+							<button type="button" id="btnAnterior" name="button1id" class="btn btn-primary floatRight" onclick="pagAnt();">Anterior</button>
+						  </div>
+						</div>
+					</div>
+					</form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+    <div id="add_tarefa" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Adicionar Tarefa</h4>
+                </div>
+                <div class="modal-body">
+					<input type="text" placeholder="Titulo" name="titulo">
+					<input type="text" placeholder="dd/mm/aaaa" name="dataAdicionarTarefa" id="dataAdicionarTarefa" />
+					<textarea name="descricao" placeholder="Descrição"></textarea>
+				</div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="add-project" data-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	var isEdicao = false;
+	var idImovel = null;
+	var idUsuario = null;
+	$(document).ready(function(){
+	   $('[data-toggle="offcanvas"]').click(function(){
+		   $("#navigation").toggleClass("hidden-xs");
+	   });
+
+       $.ajax({
+           url: './servidor/crud.php',
+               data: 'acao=perfil',
+               type: 'post',
+               dataType: 'json',
+           success: function(dados) {
+               if (dados.length == 0) {
+                   window.location = "./index.html";
+               }
+               $("#nome_perfil").html(dados[0]);
+               $("#email_perfil").html(dados[1]);
+           }
+       });
+
+	   var paramUrl = getUrlVars();
+		if (paramUrl['acao'] == 'editar') {
+			isEdicao = true;
+			idImovel = paramUrl['id_imovel'];
+			editarImovel(paramUrl['id_imovel']);
+		}
+	});
+
+	//Adicionar data
+	$('#dataAdicionarTarefa').datetimepicker({
+		language: "pt-BR",
+		weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+
+	var paginaAtual = 1;
+
+	function trocarPagina(nrPagina) {
+		$('#pagina' + paginaAtual).toggleClass('oculto visivel');
+		$('#pagina' + nrPagina).toggleClass('oculto visivel');
+		$('#tab' + paginaAtual).toggleClass('active');
+		$('#tab' + nrPagina).toggleClass('active');
+		paginaAtual = nrPagina;
+		validaBotao();
+	}
+
+	function pagProx() {
+		if (paginaAtual < 4) {
+			var proxima = paginaAtual + 1;
+			trocarPagina(proxima);
+		}
+	}
+
+	function pagAnt() {
+		if (paginaAtual > 1) {
+			var anterior = paginaAtual - 1;
+			trocarPagina(anterior);
+		}
+	}
+
+	function validaBotao() {
+		if (paginaAtual == 4) {
+			$('#btnProximo').html("Finalizar");
+			if (isEdicao) {
+				$("#btnProximo").attr("onclick","editarImovelFim();");
+			} else {
+				$("#btnProximo").attr("onclick","cadastrarImovel();");
+			}
+		} else {
+			$('#btnProximo').html("Próximo");
+			$("#btnProximo").attr("onclick","pagProx();");
+		}
+
+		if (paginaAtual == 1) {
+			$('#btnAnterior').css("display", "none");
+		} else {
+			$('#btnAnterior').css("display", "block");
+		}
+	}
+
+	function cadastrarImovel() {
+		var dados = {
+			'nome': $("#nome").val(),
+			'suites': $("#suites").val(),
+			'quartos': $("#quartos").val(),
+			'area_privativa': $("#area_privativa").val(),
+			'area_total': $("#area_total").val(),
+			'vaga_garagem': $("#vaga_garagem").val(),
+			'cep': $("#cep").val(),
+			'estado': $("#estado").val(),
+			'cidade': $("#cidade").val(),
+			'bairro': $("#bairro").val(),
+			'rua': $("#rua").val(),
+			'numero': $("#numero").val(),
+			'caracteristicas': $("#caracteristicas").val(),
+			'informacoes_adicionais': $("#informacoes_adicionais").val(),
+			'acao':'cadastrarImovel'
+		};
+
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				$('#formImovel')[0].reset();
+				alert("Imovel cadastrado com sucesso!");
+			}
+		});
+	}
+
+	function editarImovel(idImovel) {
+		var dados = {
+    		'id_imovel': idImovel,
+    		'acao': 'buscaEditarImovel'
+		};
+
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'json',
+			success: function(dados) {
+                dados = dados[0];
+				$("#nome").val(dados.nome);
+				$("#suites").val(dados.suites);
+				$("#quartos").val(dados.quartos);
+				$("#area_privativa").val(dados.area_privativa);
+				$("#area_total").val(dados.area_total);
+				$("#vaga_garagem").val(dados.vaga_garagem);
+				$("#cep").val(dados.cep);
+				$("#estado").val(dados.estado);
+				$("#cidade").val(dados.cidade);
+				$("#bairro").val(dados.bairro);
+				$("#rua").val(dados.rua);
+				$("#numero").val(dados.numero);
+				$("#caracteristicas").val(dados.caracteristicas);
+				$("#informacoes_adicionais").val(dados.informacoes_adicionais);
+			}
+		});
+	}
+
+	function getUrlVars()
+{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+	function editarImovelFim() {
+		var dados = {
+			'nome': $("#nome").val(),
+			'suites': $("#suites").val(),
+			'quartos': $("#quartos").val(),
+			'area_privativa': $("#area_privativa").val(),
+			'area_total': $("#area_total").val(),
+			'vaga_garagem': $("#vaga_garagem").val(),
+			'cep': $("#cep").val(),
+			'estado': $("#estado").val(),
+			'cidade': $("#cidade").val(),
+			'bairro': $("#bairro").val(),
+			'rua': $("#rua").val(),
+			'numero': $("#numero").val(),
+			'caracteristicas': $("#caracteristicas").val(),
+			'informacoes_adicionais': $("#informacoes_adicionais").val(),
+			'id_imovel': idImovel,
+			'acao':'editarImovel'
+		};
+
+		$.ajax({
+			url: './servidor/crud.php',
+			data: dados,
+			type: 'POST',
+			dataType: 'text',
+			success: function() {
+				alert("Imovel editado com sucesso!");
+				window.location = './busca_registros.html';
+			}
+		});
+	}
+</script>
+</body>
+</html>
